@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard KPI — NBI</title>
+<style>
+  :root {
+    --maroon: #5c1a24; --maroon-dark: #43121b; --gold: #c9a227; --gold-soft: #f3e9c8;
+    --ink: #241a1c; --muted: #7a6a6d; --line: #ead9d3; --bg: #faf6f2; --card: #ffffff;
+    --green: #1e7d46; --green-bg: #e5f4ea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.5; }
+  header { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
+    color: #fff; padding: 28px 20px 22px; }
+  header .wrap { max-width: 1080px; margin: 0 auto; }
+  header h1 { font-size: 26px; letter-spacing: .2px; }
+  header h1 span { color: var(--gold); }
+  header p { opacity: .85; font-size: 14px; margin-top: 4px; }
+  .meta { margin-top: 12px; font-size: 12.5px; opacity: .75; }
+  .meta b { color: var(--gold); font-weight: 600; }
+  main { max-width: 1080px; margin: 0 auto; padding: 20px 16px 40px; }
+  .totals { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 22px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; }
+  .stat .label { font-size: 12px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: .4px; }
+  .stat .value { font-size: 26px; font-weight: 700; margin-top: 2px; }
+  .stat .sub { font-size: 12.5px; color: var(--muted); }
+  h2 { font-size: 18px; margin: 26px 0 12px; color: var(--maroon); }
+  .brands { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .brand { background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; }
+  .brand-head { padding: 14px 16px; color: #fff; }
+  .brand-head.bolphis { background: var(--maroon); }
+  .brand-head.risolna { background: #8a6d00; }
+  .brand-head.nanos { background: #b03060; }
+  .brand-head h3 { font-size: 17px; }
+  .brand-head .pct { font-size: 13px; opacity: .9; }
+  .brand-body { padding: 14px 16px; }
+  .row { display: flex; justify-content: space-between; padding: 7px 0;
+    border-bottom: 1px dashed var(--line); font-size: 14px; }
+  .row:last-child { border-bottom: 0; }
+  .row .k { color: var(--muted); }
+  .row .v { font-weight: 700; }
+  .funnel { margin-top: 12px; background: var(--gold-soft); border-radius: 10px; padding: 10px 12px; }
+  .funnel .t { font-size: 12px; text-transform: uppercase; letter-spacing: .4px;
+    color: #6d5a12; font-weight: 700; margin-bottom: 6px; }
+  .funnel .row { border-bottom-color: #e3d3a0; }
+  .outlet { margin-top: 10px; font-size: 13px; }
+  .outlet .t { font-weight: 700; margin-bottom: 4px; color: var(--muted);
+    font-size: 12px; text-transform: uppercase; letter-spacing: .4px; }
+  .outlet li { list-style: none; display: flex; justify-content: space-between;
+    padding: 3px 0; }
+  table { width: 100%; border-collapse: collapse; background: var(--card);
+    border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 14px; }
+  th, td { padding: 9px 12px; text-align: right; border-bottom: 1px solid var(--line); }
+  th:first-child, td:first-child { text-align: left; }
+  th { background: var(--maroon); color: #fff; font-size: 12.5px;
+    text-transform: uppercase; letter-spacing: .4px; }
+  tr:last-child td { border-bottom: 0; font-weight: 700; background: var(--gold-soft); }
+  .empty { background: var(--green-bg); color: var(--green); border-radius: 10px;
+    padding: 12px 14px; font-size: 14px; margin-top: 8px; }
+  footer { max-width: 1080px; margin: 0 auto; padding: 0 16px 32px; font-size: 12.5px;
+    color: var(--muted); }
+  footer a { color: var(--maroon); }
+  #loading, #error { text-align: center; padding: 60px 20px; color: var(--muted); }
+  @media (max-width: 820px) {
+    .totals { grid-template-columns: repeat(2, 1fr); }
+    .brands { grid-template-columns: 1fr; }
+    header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Dashboard KPI <span>— NBI</span></h1>
+    <p>Bolphis &middot; Risolna &middot; Nano&rsquo;s &mdash; angka agregat dari Central Hub CRM NBI</p>
+    <div class="meta" id="meta">Memuat data&hellip;</div>
+  </div>
+</header>
+<main>
+  <div id="loading">Memuat data dari CRM&hellip;</div>
+  <div id="error" style="display:none">Data belum bisa dimuat. Coba muat ulang halaman ini.</div>
+  <div id="app" style="display:none">
+    <div class="totals" id="totals"></div>
+    <h2>Per Brand</h2>
+    <div class="brands" id="brands"></div>
+    <h2>Rekapan Leads per Minggu</h2>
+    <div id="rekapan"></div>
+    <div id="leadsNote"></div>
+  </div>
+</main>
+<footer>
+  <p>Sumber: Central Hub CRM NBI (Google Sheets). Diperbarui otomatis setiap pagi setelah sync
+  jam 03.00 &amp; 04.00 WITA. Halaman ini hanya menampilkan angka agregat &mdash;
+  <b>tidak ada nama atau nomor HP pelanggan</b>.</p>
+  <p>Aplikasi CRM: <a href="https://script.google.com/macros/s/AKfycbzWbaSHHuC0No2V9d4rbSZYofOWZ3z-2RvtvgVQZsI-JgftCu-_hu7nVbsddyXFpqWDjw/exec">Central Hub CRM NBI</a>
+  &middot; Form Leads (admin):
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScqUcnFJJu_DPO2w3sk8GJovGaY-0pfjYJFQUdj15Lou0eERA/viewform">isi leads baru</a></p>
+</footer>
+<script>
+const fmt = n => (n === null || n === undefined) ? "—" : Number(n).toLocaleString("id-ID");
+const pct = n => (n === null || n === undefined) ? "—" : Number(n).toLocaleString("id-ID", {maximumFractionDigits: 1}) + "%";
+const BRAND_CLASS = {"Bolphis": "bolphis", "Risolna": "risolna", "Nano's Bakery": "nanos"};
+
+fetch("data.json", {cache: "no-store"})
+  .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+  .then(render)
+  .catch(() => {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("error").style.display = "block";
+  });
+
+function render(d) {
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("app").style.display = "block";
+  document.getElementById("meta").innerHTML =
+    "Periode: <b>" + d.month_label + "</b> &nbsp;&middot;&nbsp; Terakhir diperbarui: <b>" +
+    d.generated_at_label + "</b>";
+
+  const brands = Object.keys(d.brands);
+  let tProspek = 0, tClosing = 0, tFU = 0, tTrx = 0, tLeads = 0, tLeadsClosing = 0, tHariIni = 0;
+  brands.forEach(b => {
+    const x = d.brands[b];
+    tProspek += x.total; tClosing += x.closing; tFU += x.follow_up;
+    tTrx += x.transaksi_bulan_ini; tLeads += x.leads.masuk;
+    tLeadsClosing += x.leads.closing; tHariIni += x.hari_ini;
+  });
+  const tRate = tProspek ? Math.round(tClosing / tProspek * 100) : 0;
+  const leadsRate = tLeads ? (tLeadsClosing / tLeads * 100).toLocaleString("id-ID", {maximumFractionDigits: 1}) + "%" : "—";
+
+  document.getElementById("totals").innerHTML = [
+    ["Total Prospek", fmt(tProspek), "semua brand"],
+    ["Total Closing", fmt(tClosing), tRate + "% dari prospek"],
+    ["Perlu Follow Up", fmt(tFU), "belum closing"],
+    ["Masuk Hari Ini", fmt(tHariIni), "prospek baru hari ini"],
+    ["Transaksi " + d.month_label, fmt(tTrx), "dari Olsera"],
+  ].map(s => `<div class="stat"><div class="label">${s[0]}</div><div class="value">${s[1]}</div><div class="sub">${s[2]}</div></div>`).join("");
+
+  document.getElementById("brands").innerHTML = brands.map(b => {
+    const x = d.brands[b];
+    const outlets = x.closing_per_outlet.map(o =>
+      `<li><span>${o.outlet}</span><b>${fmt(o.closing)}</b></li>`).join("");
+    return `<div class="brand">
+      <div class="brand-head ${BRAND_CLASS[b] || ""}">
+        <h3>${b}</h3><div class="pct">${x.closing_pct}% closing &middot; ${fmt(x.total)} prospek</div>
+      </div>
+      <div class="brand-body">
+        <div class="row"><span class="k">Closing</span><span class="v">${fmt(x.closing)}</span></div>
+        <div class="row"><span class="k">Perlu Follow Up</span><span class="v">${fmt(x.follow_up)}</span></div>
+        <div class="row"><span class="k">Masuk hari ini</span><span class="v">${fmt(x.hari_ini)}</span></div>
+        <div class="row"><span class="k">Transaksi bulan ini</span><span class="v">${fmt(x.transaksi_bulan_ini)}</span></div>
+        <div class="row"><span class="k">Repeat closing</span><span class="v">${fmt(x.repeat_customers)} pelanggan &middot; ${fmt(x.repeat_total)}x ulang</span></div>
+        <div class="funnel">
+          <div class="t">Leads dari Form</div>
+          <div class="row"><span class="k">Masuk</span><span class="v">${fmt(x.leads.masuk)}</span></div>
+          <div class="row"><span class="k">Super Leads</span><span class="v">${fmt(x.leads.super)}</span></div>
+          <div class="row"><span class="k">Closing (match Olsera)</span><span class="v">${fmt(x.leads.closing)}</span></div>
+          <div class="row"><span class="k">Conversion rate</span><span class="v">${pct(x.leads.rate_pct)}</span></div>
+        </div>
+        <div class="outlet"><div class="t">Closing per Outlet</div><ul>${outlets || "<li>Tidak ada data</li>"}</ul></div>
+      </div>
+    </div>`;
+  }).join("");
+
+  document.getElementById("rekapan").innerHTML = brands.map(b => {
+    const x = d.brands[b];
+    const rows = x.rekapan_weekly.map(w =>
+      `<tr><td>${w.label}</td><td>${fmt(w.leads)}</td><td>${fmt(w.super)}</td><td>${fmt(w.closing)}</td></tr>`).join("");
+    return `<h3 style="margin:18px 0 8px;font-size:15px">${b}</h3>
+      <table><tr><th>Tanggal</th><th>Leads</th><th>Super Leads</th><th>Closing</th></tr>
+      ${rows}
+      <tr><td>Total</td><td>${fmt(x.leads.masuk)}</td><td>${fmt(x.leads.super)}</td><td>${fmt(x.leads.closing)}</td></tr></table>`;
+  }).join("");
+
+  document.getElementById("leadsNote").innerHTML = tLeads === 0
+    ? `<div class="empty">Belum ada leads dari form bulan ini. Begitu admin mulai mengisi form untuk setiap chat baru, angka funnel di atas akan terisi otomatis setelah sync jam 04.00 WITA.</div>`
+    : `<div class="empty">Leads dari form bulan ini: ${fmt(tLeads)} masuk, ${fmt(tLeadsClosing)} closing (${leadsRate}). Closing di sini hanya yang cocok nomor HP-nya dengan transaksi Olsera.</div>`;
+}
+</script>
+</body>
+</html>

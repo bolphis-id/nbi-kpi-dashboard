@@ -1,0 +1,205 @@
+{
+  "generated_at": "2026-11-22T09:02:42+08:00",
+  "generated_at_label": "22 Nov 2026 09:02 WITA",
+  "month": "2026-11",
+  "month_label": "November 2026",
+  "source": "Central Hub CRM NBI (Google Sheets) — agregat saja, tanpa nama/no HP",
+  "brands": {
+    "Bolphis": {
+      "total": 14985,
+      "closing": 11710,
+      "follow_up": 3275,
+      "hari_ini": 110,
+      "repeat_customers": 21,
+      "repeat_total": 90,
+      "transaksi_bulan_ini": 3317,
+      "closing_per_outlet": [
+        {
+          "outlet": "Tanpa outlet",
+          "closing": 8865
+        },
+        {
+          "outlet": "Racing Centre",
+          "closing": 993
+        },
+        {
+          "outlet": "Alauddin",
+          "closing": 663
+        },
+        {
+          "outlet": "Sudiang",
+          "closing": 574
+        },
+        {
+          "outlet": "Maros",
+          "closing": 341
+        },
+        {
+          "outlet": "Panciro Gowa",
+          "closing": 274
+        }
+      ],
+      "leads": {
+        "masuk": 0,
+        "super": 0,
+        "closing": 0,
+        "rate_pct": null
+      },
+      "rekapan_weekly": [
+        {
+          "label": "Tanggal",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "1-7",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "8-14",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "15-22",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        }
+      ],
+      "closing_pct": 78
+    },
+    "Risolna": {
+      "total": 8683,
+      "closing": 8118,
+      "follow_up": 565,
+      "hari_ini": 25,
+      "repeat_customers": 5,
+      "repeat_total": 6,
+      "transaksi_bulan_ini": 652,
+      "closing_per_outlet": [
+        {
+          "outlet": "Tanpa outlet",
+          "closing": 7496
+        },
+        {
+          "outlet": "Maros",
+          "closing": 218
+        },
+        {
+          "outlet": "Sudiang",
+          "closing": 157
+        },
+        {
+          "outlet": "Alauddin",
+          "closing": 124
+        },
+        {
+          "outlet": "Panciro Gowa",
+          "closing": 123
+        }
+      ],
+      "leads": {
+        "masuk": 0,
+        "super": 0,
+        "closing": 0,
+        "rate_pct": null
+      },
+      "rekapan_weekly": [
+        {
+          "label": "Tanggal",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "1-7",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "8-14",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "15-22",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        }
+      ],
+      "closing_pct": 93
+    },
+    "Nano's Bakery": {
+      "total": 347,
+      "closing": 344,
+      "follow_up": 3,
+      "hari_ini": 13,
+      "repeat_customers": 1,
+      "repeat_total": 1,
+      "transaksi_bulan_ini": 256,
+      "closing_per_outlet": [
+        {
+          "outlet": "Tanpa outlet",
+          "closing": 156
+        },
+        {
+          "outlet": "Panciro Gowa",
+          "closing": 95
+        },
+        {
+          "outlet": "Alauddin",
+          "closing": 85
+        },
+        {
+          "outlet": "Maros",
+          "closing": 7
+        },
+        {
+          "outlet": "Sudiang",
+          "closing": 1
+        }
+      ],
+      "leads": {
+        "masuk": 0,
+        "super": 0,
+        "closing": 0,
+        "rate_pct": null
+      },
+      "rekapan_weekly": [
+        {
+          "label": "Tanggal",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "1-7",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "8-14",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        },
+        {
+          "label": "15-22",
+          "leads": 0,
+          "super": 0,
+          "closing": 0
+        }
+      ],
+      "closing_pct": 99
+    }
+  }
+}
