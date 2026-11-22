@@ -92,6 +92,8 @@
     <h2>Rekapan Leads per Minggu</h2>
     <div id="rekapan"></div>
     <div id="leadsNote"></div>
+    <h2>Belanja Iklan Meta</h2>
+    <div id="spend"></div>
   </div>
 </main>
 <footer>
@@ -180,6 +182,28 @@ function render(d) {
   document.getElementById("leadsNote").innerHTML = tLeads === 0
     ? `<div class="empty">Belum ada leads dari form bulan ini. Begitu admin mulai mengisi form untuk setiap chat baru, angka funnel di atas akan terisi otomatis setelah sync jam 04.00 WITA.</div>`
     : `<div class="empty">Leads dari form bulan ini: ${fmt(tLeads)} masuk, ${fmt(tLeadsClosing)} closing (${leadsRate}). Closing di sini hanya yang cocok nomor HP-nya dengan transaksi Olsera.</div>`;
+
+  const sp = d.spend;
+  const spendEl = document.getElementById("spend");
+  if (!sp || !sp.brands) {
+    spendEl.innerHTML = `<div class="empty">Data belanja iklan belum bisa dibaca dari sheet Master.</div>`;
+  } else {
+    const rp = n => (n === null || n === undefined) ? "—" : "Rp " + fmt(n);
+    const rows = Object.keys(sp.brands).map(b => {
+      const x = sp.brands[b];
+      if (!x) return `<tr><td>${b}</td><td>—</td><td>—</td><td>—</td><td>—</td><td>${sp.notes[b] || ""}</td></tr>`;
+      const cpl = x.ctwa_chats ? rp(x.cost_per_chat) : "—";
+      return `<tr><td>${b}</td><td>${rp(x.spend_total)}</td><td>${rp(x.spend_ctwa)}</td><td>${fmt(x.ctwa_chats)}</td><td>${cpl}</td><td>Periode ${sp.period}</td></tr>`;
+    }).join("");
+    const b = sp.brands["Bolphis"];
+    const taxNote = (b && b.spend_total_incl_tax)
+      ? ` Total termasuk pajak 11%: ${rp(b.spend_total_incl_tax)}.` : "";
+    const boNote = (b && b.spend_big_order)
+      ? ` Kampanye Paket Big Order ${rp(b.spend_big_order)} tidak masuk subtotal di atas (di luar Awareness + CTWA).` : "";
+    spendEl.innerHTML =
+      `<table><tr><th>Brand</th><th>Belanja Pemasaran</th><th>CTWA</th><th>Chat CTWA</th><th>Biaya / Chat</th><th>Catatan</th></tr>${rows}</table>
+       <p style="margin-top:8px;font-size:13px;color:var(--muted)">Periode: ${sp.period}. Sumber: ${sp.source}.${taxNote}${boNote} Biaya per leads/closing dari form: — (belum ada leads dari form; closing CRM adalah semua pembeli Olsera, bukan closing iklan).</p>`;
+  }
 }
 </script>
 </body>

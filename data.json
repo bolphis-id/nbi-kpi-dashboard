@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-22T09:02:42+08:00",
-  "generated_at_label": "22 Nov 2026 09:02 WITA",
+  "generated_at": "2026-11-22T09:26:03+08:00",
+  "generated_at_label": "22 Nov 2026 09:26 WITA",
   "month": "2026-11",
   "month_label": "November 2026",
   "source": "Central Hub CRM NBI (Google Sheets) — agregat saja, tanpa nama/no HP",
@@ -200,6 +200,77 @@
         }
       ],
       "closing_pct": 99
+    }
+  },
+  "spend": {
+    "period": "1–15 November 2026 WITA • Hasil periode penuh • Admin CS parsial 1–6 November • Kunjungan profil belum tersedia",
+    "source": "Supermetrics Meta Ads FA • Manager Ian • 16 November 2026 WITA • atribusi default",
+    "brands": {
+      "Bolphis": {
+        "spend_total": 25136458,
+        "spend_total_incl_tax": 27901468,
+        "spend_ctwa": 9167093,
+        "spend_awareness": 15969365,
+        "spend_big_order": 440719,
+        "ctwa_chats": 1519,
+        "cost_per_chat": 6035,
+        "campaigns": [
+          {
+            "campaign": "All Outlet CTWA",
+            "spend": 9167093,
+            "chats": 1519,
+            "group": "Pemasaran"
+          },
+          {
+            "campaign": "Bolphis Awareness Mks,Mrs,Gw",
+            "spend": 5280296,
+            "chats": 3,
+            "group": "Pemasaran"
+          },
+          {
+            "campaign": "Bolphis Bandara - Awareness",
+            "spend": 3003267,
+            "chats": 1,
+            "group": "Pemasaran"
+          },
+          {
+            "campaign": "Outlet Sudiang - Awareness",
+            "spend": 2251608,
+            "chats": 3,
+            "group": "Pemasaran"
+          },
+          {
+            "campaign": "Outlet Racing - Awareness",
+            "spend": 2245320,
+            "chats": 5,
+            "group": "Pemasaran"
+          },
+          {
+            "campaign": "Outlet Maros - Awareness",
+            "spend": 2132768,
+            "chats": 5,
+            "group": "Pemasaran"
+          },
+          {
+            "campaign": "Outlet Panciro - Awareness",
+            "spend": 1056106,
+            "chats": 0,
+            "group": "Pemasaran"
+          },
+          {
+            "campaign": "Paket Big Order Nano's & Bolphis",
+            "spend": 440719,
+            "chats": 30,
+            "group": "Pemasaran"
+          }
+        ]
+      },
+      "Risolna": null,
+      "Nano's Bakery": null
+    },
+    "notes": {
+      "Risolna": "Belum ada data spend — tidak ada di sheet Master, perlu export atau konfirmasi Ian.",
+      "Nano's Bakery": "Tidak ada iklan Meta."
     }
   }
 }
