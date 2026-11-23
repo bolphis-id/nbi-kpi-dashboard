@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-11-22T09:26:03+08:00",
-  "generated_at_label": "22 Nov 2026 09:26 WITA",
+  "generated_at": "2026-11-23T07:19:13+08:00",
+  "generated_at_label": "23 Nov 2026 07:19 WITA",
   "month": "2026-11",
   "month_label": "November 2026",
   "source": "Central Hub CRM NBI (Google Sheets) — agregat saja, tanpa nama/no HP",
   "brands": {
     "Bolphis": {
-      "total": 14985,
-      "closing": 11710,
-      "follow_up": 3275,
-      "hari_ini": 110,
+      "total": 15083,
+      "closing": 11810,
+      "follow_up": 3273,
+      "hari_ini": 98,
       "repeat_customers": 21,
       "repeat_total": 90,
-      "transaksi_bulan_ini": 3317,
+      "transaksi_bulan_ini": 3482,
       "closing_per_outlet": [
         {
           "outlet": "Tanpa outlet",
@@ -20,23 +20,23 @@
         },
         {
           "outlet": "Racing Centre",
-          "closing": 993
+          "closing": 1020
         },
         {
           "outlet": "Alauddin",
-          "closing": 663
+          "closing": 688
         },
         {
           "outlet": "Sudiang",
-          "closing": 574
+          "closing": 598
         },
         {
           "outlet": "Maros",
-          "closing": 341
+          "closing": 353
         },
         {
           "outlet": "Panciro Gowa",
-          "closing": 274
+          "closing": 286
         }
       ],
       "leads": {
@@ -74,13 +74,13 @@
       "closing_pct": 78
     },
     "Risolna": {
-      "total": 8683,
-      "closing": 8118,
+      "total": 8705,
+      "closing": 8140,
       "follow_up": 565,
-      "hari_ini": 25,
+      "hari_ini": 22,
       "repeat_customers": 5,
       "repeat_total": 6,
-      "transaksi_bulan_ini": 652,
+      "transaksi_bulan_ini": 685,
       "closing_per_outlet": [
         {
           "outlet": "Tanpa outlet",
@@ -88,19 +88,19 @@
         },
         {
           "outlet": "Maros",
-          "closing": 218
+          "closing": 225
         },
         {
           "outlet": "Sudiang",
-          "closing": 157
+          "closing": 163
         },
         {
           "outlet": "Alauddin",
-          "closing": 124
+          "closing": 129
         },
         {
           "outlet": "Panciro Gowa",
-          "closing": 123
+          "closing": 127
         }
       ],
       "leads": {
@@ -135,16 +135,16 @@
           "closing": 0
         }
       ],
-      "closing_pct": 93
+      "closing_pct": 94
     },
     "Nano's Bakery": {
-      "total": 347,
-      "closing": 344,
+      "total": 359,
+      "closing": 356,
       "follow_up": 3,
-      "hari_ini": 13,
+      "hari_ini": 12,
       "repeat_customers": 1,
       "repeat_total": 1,
-      "transaksi_bulan_ini": 256,
+      "transaksi_bulan_ini": 277,
       "closing_per_outlet": [
         {
           "outlet": "Tanpa outlet",
@@ -152,15 +152,15 @@
         },
         {
           "outlet": "Panciro Gowa",
-          "closing": 95
+          "closing": 101
         },
         {
           "outlet": "Alauddin",
-          "closing": 85
+          "closing": 90
         },
         {
           "outlet": "Maros",
-          "closing": 7
+          "closing": 8
         },
         {
           "outlet": "Sudiang",
@@ -203,64 +203,58 @@
     }
   },
   "spend": {
-    "period": "1–15 November 2026 WITA • Hasil periode penuh • Admin CS parsial 1–6 November • Kunjungan profil belum tersedia",
-    "source": "Supermetrics Meta Ads FA • Manager Ian • 16 November 2026 WITA • atribusi default",
+    "period": "1–22 November 2026 WITA • Agregat periode penuh • Admin CS parsial 1–6 Nov • Kunjungan profil belum tersedia.",
+    "source": "Supermetrics FA • Manager Ian act_1280896160912027 • 23 November 2026 06.01 WITA • IDR • timezone sumber Asia/Makassar • atribusi default sumber.",
     "brands": {
       "Bolphis": {
-        "spend_total": 25136458,
-        "spend_total_incl_tax": 27901468,
-        "spend_ctwa": 9167093,
-        "spend_awareness": 15969365,
-        "spend_big_order": 440719,
-        "ctwa_chats": 1519,
-        "cost_per_chat": 6035,
+        "spend_total": 36960854,
+        "spend_total_incl_tax": 41026548,
+        "spend_ctwa": 13800599,
+        "spend_awareness": 23160255,
+        "spend_big_order": 0,
+        "ctwa_chats": 2292,
+        "cost_per_chat": 6021,
         "campaigns": [
           {
             "campaign": "All Outlet CTWA",
-            "spend": 9167093,
-            "chats": 1519,
+            "spend": 13800599,
+            "chats": 2292,
             "group": "Pemasaran"
           },
           {
             "campaign": "Bolphis Awareness Mks,Mrs,Gw",
-            "spend": 5280296,
-            "chats": 3,
+            "spend": 7869645,
+            "chats": 10,
             "group": "Pemasaran"
           },
           {
             "campaign": "Bolphis Bandara - Awareness",
-            "spend": 3003267,
+            "spend": 4383227,
             "chats": 1,
             "group": "Pemasaran"
           },
           {
             "campaign": "Outlet Sudiang - Awareness",
-            "spend": 2251608,
-            "chats": 3,
+            "spend": 3256651,
+            "chats": 10,
             "group": "Pemasaran"
           },
           {
             "campaign": "Outlet Racing - Awareness",
-            "spend": 2245320,
-            "chats": 5,
+            "spend": 3267126,
+            "chats": 7,
             "group": "Pemasaran"
           },
           {
             "campaign": "Outlet Maros - Awareness",
-            "spend": 2132768,
+            "spend": 2833145,
             "chats": 5,
             "group": "Pemasaran"
           },
           {
             "campaign": "Outlet Panciro - Awareness",
-            "spend": 1056106,
+            "spend": 1550461,
             "chats": 0,
-            "group": "Pemasaran"
-          },
-          {
-            "campaign": "Paket Big Order Nano's & Bolphis",
-            "spend": 440719,
-            "chats": 30,
             "group": "Pemasaran"
           }
         ]
